@@ -246,10 +246,26 @@ startBtn.addEventListener('click', startGame);
 yesBtn.addEventListener('click', () => {
     proposalScreen.classList.remove('active');
     proposalScreen.classList.add('hidden');
+
     celebrationScreen.classList.remove('hidden');
     celebrationScreen.classList.add('active');
-    triggerConfetti(); // Optional: Implement confetti
+
+    // 🎵 Play romantic music
+    const music = document.getElementById('celebration-music');
+    music.volume = 0.7; // soft romantic volume
+    music.volume = 0;
+    music.play();
+    let vol = 0;
+    const fade = setInterval(() => {
+        if (vol < 0.6) {
+            vol += 0.05;
+            music.volume = vol;
+        } else {
+            clearInterval(fade);
+        }    
+    }, 200);
 });
+
 
 // "No" button runs away
 noBtn.addEventListener('mouseover', moveNoButton);
@@ -271,3 +287,4 @@ function triggerConfetti() {
 
 // Initialize
 resize();
+
