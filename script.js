@@ -412,4 +412,24 @@ function startFireworks() {
     }, 1200);
 }
 
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: gold;
+    border-radius: 50%;
+    animation: explode 1.5s ease-out forwards;
+}
+
+@keyframes explode {
+    from {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    to {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+
 
