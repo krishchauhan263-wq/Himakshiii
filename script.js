@@ -323,4 +323,16 @@ function createFloatingHearts() {
     setTimeout(() => heart.remove(), 6000);
 }
 
+function confettiBurst() {
+    for (let i = 0; i < 40; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.background = ["#ff4d6d", "#ff8fa3", "#fff"][Math.floor(Math.random()*3)];
+        celebrationScreen.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 3000);
+    }
+}
+
 
