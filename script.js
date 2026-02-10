@@ -328,6 +328,11 @@ function typeMessage() {
                 const finalLine = document.getElementById("final-line");
                 if (finalLine) finalLine.style.opacity = 1;
             }, 1500);
+            setTimeout(() => {
+                const btn = document.getElementById("promise-btn");
+                btn.style.opacity = 1;
+                btn.style.pointerEvents = "auto";
+            }, 3000);
         }
     }, 40);
 }
@@ -355,6 +360,7 @@ function confettiBurst() {
         setTimeout(() => confetti.remove(), 3000);
     }
 }
+
 
 
 
