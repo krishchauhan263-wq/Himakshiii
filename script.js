@@ -264,6 +264,9 @@ yesBtn.addEventListener('click', () => {
         title.classList.add('beat');
     }, 1000); // heartbeat timing
     typeMessage();
+    confettiBurst();
+    setInterval(createFloatingHearts, 600);
+
 });
 
 
@@ -309,7 +312,12 @@ function typeMessage() {
         if (i >= messageText.length) {
             clearInterval(typing);
         }
-    }, 40); // typing speed
+    }, 40);// typing speed
+    setTimeout(() => {
+        document.getElementById("final-line").style.opacity = 1;
+    }, 2000);
+    
+
 }
 
 function createFloatingHearts() {
@@ -334,5 +342,6 @@ function confettiBurst() {
         setTimeout(() => confetti.remove(), 3000);
     }
 }
+
 
 
