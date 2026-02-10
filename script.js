@@ -361,7 +361,55 @@ function confettiBurst() {
     }
 }
 
+const promiseBtn = document.getElementById("promise-btn");
+let holdTimer;
+
+promiseBtn.addEventListener("mousedown", startHold);
+promiseBtn.addEventListener("touchstart", startHold);
+
+promiseBtn.addEventListener("mouseup", cancelHold);
+promiseBtn.addEventListener("mouseleave", cancelHold);
+promiseBtn.addEventListener("touchend", cancelHold);
+
+function startHold() {
+    promiseBtn.classList.add("hold");
+
+    holdTimer = setTimeout(() => {
+        openPromiseScreen();
+    }, 3000); // 3 seconds
+}
+
+function cancelHold() {
+    promiseBtn.classList.remove("hold");
+    clearTimeout(holdTimer);
+}
 
 
+function openPromiseScreen() {
+    celebrationScreen.classList.remove("active");
+    celebrationScreen.classList.add("hidden");
+
+    const promiseScreen = document.getElementById("promise-screen");
+    promiseScreen.classList.remove("hidden");
+    promiseScreen.classList.add("active");
+
+    startFireworks();
+}
+
+function startFireworks() {
+    setInterval(() => {
+        for (let i = 0; i < 25; i++) {
+            const fw = document.createElement("div");
+            fw.className = "firework";
+            fw.style.left = Math.random() * window.innerWidth + "px";
+            fw.style.top = Math.random() * window.innerHeight + "px";
+            fw.style.setProperty("--x", (Math.random() * 200 - 100) + "px");
+            fw.style.setProperty("--y", (Math.random() * 200 - 100) + "px");
+
+            document.body.appendChild(fw);
+            setTimeout(() => fw.remove(), 1500);
+        }
+    }, 1200);
+}
 
 
