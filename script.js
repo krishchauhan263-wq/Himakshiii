@@ -10,6 +10,7 @@ let hearts = [];
 let particles = []; // For effects
 let animationId;
 let loveMeter = document.getElementById('love-fill');
+let beatInterval;
 
 // DOM Elements
 const startScreen = document.getElementById('start-screen');
@@ -250,20 +251,18 @@ yesBtn.addEventListener('click', () => {
     celebrationScreen.classList.remove('hidden');
     celebrationScreen.classList.add('active');
 
-    // 🎵 Play romantic music
     const music = document.getElementById('celebration-music');
-    music.volume = 0.7; // soft romantic volume
-    music.volume = 0;
+    music.volume = 0.6;
     music.play();
-    let vol = 0;
-    const fade = setInterval(() => {
-        if (vol < 0.6) {
-            vol += 0.05;
-            music.volume = vol;
-        } else {
-            clearInterval(fade);
-        }    
-    }, 200);
+
+    const title = celebrationScreen.querySelector('h1');
+
+    // 💓 Sync heartbeat (Night Changes ~ 56–60 BPM feel)
+    beatInterval = setInterval(() => {
+        title.classList.remove('beat');
+        void title.offsetWidth; // reflow trick
+        title.classList.add('beat');
+    }, 1000); // heartbeat timing
 });
 
 
@@ -287,4 +286,5 @@ function triggerConfetti() {
 
 // Initialize
 resize();
+
 
