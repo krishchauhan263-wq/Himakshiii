@@ -201,3 +201,34 @@ p {
     text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
+/* 💓 Heartbeat animation */
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+    14% {
+        transform: scale(1.08);
+    }
+    28% {
+        transform: scale(1);
+    }
+    42% {
+        transform: scale(1.08);
+    }
+    70% {
+        transform: scale(1);
+    }
+}
+/* Apply heartbeat to final screen text */
+#celebration-screen h1 {
+    animation: heartBeat 1.8s infinite;
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 20px rgba(255, 77, 109, 0.8),
+        0 0 40px rgba(255, 77, 109, 1);
+}
+
+#celebration-screen p {
+    animation: heartBeat 2.5s infinite;
+}
+
