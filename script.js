@@ -263,6 +263,7 @@ yesBtn.addEventListener('click', () => {
         void title.offsetWidth; // reflow trick
         title.classList.add('beat');
     }, 1000); // heartbeat timing
+    typeMessage();
 });
 
 
@@ -286,5 +287,29 @@ function triggerConfetti() {
 
 // Initialize
 resize();
+
+const messageText = `Hey Himakshi ❤️
+Bas itna kehna tha ki thank you meri life ka part banne ke liye 🫶
+Tumhari presence hi sab kuch better bana deti hai.
+Tumhari smile, care aur saath — sab bahut special hai mere liye 💕
+Sach mein lucky hoon jo tum meri ho.
+Always grateful for us 😌❤️
+
+— Krish 💫`;
+
+function typeMessage() {
+    const el = document.getElementById('typed-message');
+    el.innerHTML = "";
+    let i = 0;
+
+    const typing = setInterval(() => {
+        el.innerHTML += messageText.charAt(i);
+        i++;
+
+        if (i >= messageText.length) {
+            clearInterval(typing);
+        }
+    }, 40); // typing speed
+}
 
 
