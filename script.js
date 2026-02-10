@@ -312,4 +312,15 @@ function typeMessage() {
     }, 40); // typing speed
 }
 
+function createFloatingHearts() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    celebrationScreen.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+
 
