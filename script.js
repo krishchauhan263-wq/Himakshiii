@@ -245,29 +245,40 @@ function startGame() {
 startBtn.addEventListener('click', startGame);
 
 yesBtn.addEventListener('click', () => {
+    // Hide proposal screen
     proposalScreen.classList.remove('active');
     proposalScreen.classList.add('hidden');
 
+    // Show celebration screen
     celebrationScreen.classList.remove('hidden');
     celebrationScreen.classList.add('active');
 
+    /* 🎶 PLAY MUSIC */
     const music = document.getElementById('celebration-music');
     music.volume = 0.6;
+    music.currentTime = 0;
     music.play();
 
+    /* 💓 HEARTBEAT SYNC (title beat) */
     const title = celebrationScreen.querySelector('h1');
-
-    // 💓 Sync heartbeat (Night Changes ~ 56–60 BPM feel)
-    beatInterval = setInterval(() => {
+    setInterval(() => {
         title.classList.remove('beat');
-        void title.offsetWidth; // reflow trick
+        void title.offsetWidth; // force reflow
         title.classList.add('beat');
     }, 1000); // heartbeat timing
-    typeMessage();
-    confettiBurst();
-    setInterval(createFloatingHearts, 600);
 
+    /* 🎆 CONFETTI (ONE TIME) */
+    confettiBurst();
+
+    /* ❤️ FLOATING HEARTS */
+    setInterval(() => {
+        createFloatingHearts();
+    }, 600);
+
+    /* ⌨️ START TYPING MESSAGE */
+    typeMessage();
 });
+
 
 
 // "No" button runs away
@@ -301,24 +312,26 @@ Always grateful for us 😌❤️
 — Krish 💫`;
 
 function typeMessage() {
-    const el = document.getElementById('typed-message');
+    const el = document.getElementById("typed-message");
     el.innerHTML = "";
     let i = 0;
 
     const typing = setInterval(() => {
-        el.innerHTML += messageText.charAt(i);
+        el.innerHTML += messageText[i];
         i++;
 
         if (i >= messageText.length) {
             clearInterval(typing);
-        }
-    }, 40);// typing speed
-    setTimeout(() => {
-        document.getElementById("final-line").style.opacity = 1;
-    }, 2000);
-    
 
+            // 🥹 Show final emotional line
+            setTimeout(() => {
+                const finalLine = document.getElementById("final-line");
+                if (finalLine) finalLine.style.opacity = 1;
+            }, 1500);
+        }
+    }, 40);
 }
+
 
 function createFloatingHearts() {
     const heart = document.createElement("div");
@@ -342,6 +355,7 @@ function confettiBurst() {
         setTimeout(() => confetti.remove(), 3000);
     }
 }
+
 
 
 
