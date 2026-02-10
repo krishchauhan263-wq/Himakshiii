@@ -286,4 +286,24 @@ p {
     transition: opacity 2s ease;
 }
 
+#promise-btn {
+    margin-top: 30px;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+#promise-btn.hold {
+    transform: scale(0.95);
+    background: #c9184a;
+}
+
 
